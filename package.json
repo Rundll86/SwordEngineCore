@@ -1,0 +1,11 @@
+{
+  "name": "sword-engine-full",
+  "version": "1.0.6",
+  "description": "2D desktop game framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": ";"
+  },
+  "author": "rundll86",
+  "license": "ISC"
+}
