@@ -5,7 +5,7 @@ class GameSprite extends GameObject {
     DisplayName = "GameSprite";
     ID = 0;
     Describe = "A common game sprite.";
-    ActionPath = DataGenerator.ActionPath(this.DisplayName);
+    ActionPath = {};
     constructor() {
         super();
         ResourceLoader.Init();

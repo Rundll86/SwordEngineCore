@@ -3,8 +3,11 @@ class ResourceLoader {
     SetAsMain() { window.ResourceExcel = this; };
     LoadBitmap(Path, Callback = (_Data) => { }) {
         let BitmapLoader = document.createElement("img");
-        BitmapLoader.src = Path;
         BitmapLoader.addEventListener("load", () => (createImageBitmap(BitmapLoader).then(Callback)));
+        BitmapLoader.addEventListener("error", () => this.LoadBitmap("./assets/common/no_texture.png", (Data) => {
+            Callback(Data);
+        }));
+        BitmapLoader.src = Path;
     };
     LoadBitmapToExcel(Path, Name, Callback = (_Data) => { }) {
         this.LoadBitmap(Path, (Data) => {
