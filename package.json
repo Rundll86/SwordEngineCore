@@ -1,0 +1,13 @@
+{
+  "name": "sword-engine-core",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": ";"
+  },
+  "author": "Rundll86",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^28.1.0"
+  }
+}
