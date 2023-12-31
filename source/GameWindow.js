@@ -17,6 +17,7 @@ class GameWindow {
     Size = new Rect(640, 480);
     Favicon = path.join(__dirname, "Asset/Favicon.ico");
     DevTool = false;
+    Resizable = false;
     constructor(TTitle = "Sword Game") {
         this.Title = TTitle;
         this.Root.loadFile(path.join(__dirname, "Asset/Stage.html"));
@@ -25,18 +26,14 @@ class GameWindow {
     Update() {
         this.Root.setTitle(this.Title);
         this.Root.setSize(this.Size.Width, this.Size.Height);
+        this.Root.resizable = !!this.Resizable;
         if (PathExists(this.Favicon)) { this.Root.setIcon(this.Favicon) }
         else {
             throw (
-                new Error("Path not exists.")
-            );
+                new Error("Path not exists."));
         };
-        if (this.DevTool) {
-            this.Root.webContents.openDevTools();
-        }
-        else {
-            this.Root.webContents.closeDevTools();
-        };
+        if (this.DevTool) { this.Root.webContents.openDevTools(); }
+        else { this.Root.webContents.closeDevTools(); };
         Menu.setApplicationMenu(null);
     };
     Destory() {
