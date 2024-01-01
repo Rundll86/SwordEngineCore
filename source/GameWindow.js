@@ -13,7 +13,7 @@ function PathExists(Path) {
 };
 class GameWindow {
     Title = "";
-    Root = new BrowserWindow;
+    Root = new BrowserWindow({ webPreferences: { preload: path.join(__dirname, "Asset/Preload.js") } });
     Size = new Rect(640, 480);
     Favicon = path.join(__dirname, "Asset/Favicon.ico");
     DevTool = false;
