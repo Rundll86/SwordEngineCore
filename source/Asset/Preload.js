@@ -1,11 +1,11 @@
 const { contextBridge, ipcRenderer } = require("electron");
-class GameEvent {
-    ElectronIpc = ipcRenderer;
-    Send(Name, Value) {
-        this.ElectronIpc.send(Name, Value);
-    };
-    Listen(Name, Callback = (Data) => { }) {
-        this.ElectronIpc.on(Name, (_Event, Data) => { Callback(Data); })
+async function readFile(path, encoding = "utf8") {
+    let data = (await ipcRenderer.invoke("File", { Type: "Read", Data: "", Encoding: encoding, "Path": path }));
+    try {
+        return JSON.parse(data);
+    }
+    catch {
+        return data;
     };
 };
-contextBridge.exposeInMainWorld("GameEvent", GameEvent);
+contextBridge.exposeInMainWorld("fileGetter", { readFile });
